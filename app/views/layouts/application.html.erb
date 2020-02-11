@@ -12,6 +12,23 @@
   </head>
 
   <body>
+    <header class="head_bar">
+      <% if user_signed_in? %>
+
+        <span>「<%= current_user.email.to_s %>」でログインしています。</span>
+        <%= link_to "ログアウトする", destroy_user_session_path, method: :delete, class: 'btn btn-primary'  %>
+
+        <%= link_to "ユーザー情報", edit_user_registration_path(current_user.id), class: 'btn btn-primary'  %>
+
+      <% else %>
+
+        <a>ログインしていません</a>
+        <%= link_to "ログインする", new_user_session_path , class: 'btn btn-primary' %>
+        <%= link_to "新規ユーザー", new_user_registration_path , class: 'btn btn-primary' %>
+
+      <% end %>
+    </header>
+
     <%= yield %>
   </body>
 </html>
