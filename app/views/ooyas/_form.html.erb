@@ -1,66 +1,75 @@
+<!-- メッセージとか -->
+<p id="notice_msg"><%= render 'layouts/show_notice_msg' %></p>
+<p id="danger_msg"><%= render 'layouts/show_danger_msg' %></p>
+
 <%= form_with(model: ooya, local: true) do |form| %>
-  <% if ooya.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(ooya.errors.count, "error") %> prohibited this ooya from being saved:</h2>
 
-      <ul>
-        <% ooya.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <div class="bisecting_box">
+    <div class="bisecting_1">
+      <%= form.label :surname,class: "bisecting_content_1" %>
+      <%= form.text_field :surname  ,class: "bisecting_content_2"%>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :surname %>
-    <%= form.text_field :surname %>
+    <div class="bisecting_2">
+      <%= form.label :name  ,class: "bisecting_content_1"%>
+      <%= form.text_field :name  ,class: "bisecting_content_2"%>
+    </div>
+  </div>
+  <br>
+  <div class="bisecting_box">
+    <div class="bisecting_1">
+      <%= form.label :surname_kana,class: "bisecting_content_1" %>
+      <%= form.text_field :surname_kana  ,class: "bisecting_content_2"%>
+    </div>
+
+    <div class="bisecting_2">
+      <%= form.label :name_kana  ,class: "bisecting_content_1"%>
+      <%= form.text_field :name_kana  ,class: "bisecting_content_2"%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <br>
+
+  <div class="bisecting_box">
+    <div class="bisecting_1">
+      <%= form.label :zip_cd,class: "bisecting_content_1" %>
+      <%= form.text_field :zip_cd  ,class: "bisecting_content_2"%>
+    </div>
+
+    <div class="bisecting_2">
+      <%= form.label :address1  ,class: "bisecting_content_1"%>
+      <%= form.text_field :address1  ,class: "bisecting_content_2"%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :surname_kana %>
-    <%= form.text_field :surname_kana %>
+  <div class="bisecting_box">
+    <div class="bisecting_1">
+    </div>
+
+    <div class="bisecting_2">
+      <%= form.label :address2  ,class: "bisecting_content_1"%>
+      <%= form.text_field :address2  ,class: "bisecting_content_2"%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :name_kana %>
-    <%= form.text_field :name_kana %>
+  <br>
+
+  <div class="bisecting_box">
+    <div class="bisecting_1">
+      <%= form.label :tel  ,class: "bisecting_content_1"%>
+      <%= form.text_field :tel  ,class: "bisecting_content_2"%>
+    </div>
+
+    <div class="bisecting_2">
+      <%= form.label :mobile  ,class: "bisecting_content_1"%>
+      <%= form.text_field :mobile  ,class: "bisecting_content_2"%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :zip_cd %>
-    <%= form.text_field :zip_cd %>
+  <div class="line_info_multiline">
+    <%= form.label  :memo,class: "bisecting_content_1" %>
+    <%= form.text_area :memo  ,class: "bisecting_content_2" %>
   </div>
-
-  <div class="field">
-    <%= form.label :address1 %>
-    <%= form.text_field :address1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address2 %>
-    <%= form.text_field :address2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tel %>
-    <%= form.text_field :tel %>
-  </div>
-
-  <div class="field">
-    <%= form.label :mobile %>
-    <%= form.text_field :mobile %>
-  </div>
-
-  <div class="field">
-    <%= form.label :memo %>
-    <%= form.text_area :memo %>
-  </div>
-
 
   <br>
   <h4>【所有する物件】</h4>
@@ -92,6 +101,7 @@
      </tbody>
    </table>
    <%= form.add_nested_fields_link :buildings, 'Add new', class: 'btn btn-primary', role: 'button' %>
+
 
 
   <div class="actions">

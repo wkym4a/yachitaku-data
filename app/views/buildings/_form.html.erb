@@ -1,74 +1,86 @@
+<!-- メッセージとか -->
+<p id="notice_msg"><%= render 'layouts/show_notice_msg' %></p>
+<p id="danger_msg"><%= render 'layouts/show_danger_msg' %></p>
+
 <%= form_with(model: building, local: true) do |form| %>
-  <% if building.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(building.errors.count, "error") %> prohibited this building from being saved:</h2>
 
-      <ul>
-        <% building.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <div class="bisecting_box">
+    <div class="bisecting_1">
+      <%= form.label :ooya_id,class: "bisecting_content_1" %>
+      <%= form.collection_select( :ooya_id  ,Ooya.all, :id , :full_name ,{},{class: "bisecting_content_2"})%>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <div class="bisecting_2">
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :sekisui_div %>
-
-    <%= form.radio_button :sekisui_div , :general  %>
-    <%= form.label :一般 %>
-
-    <%= form.radio_button :sekisui_div ,:sekisui %>
-    <%= form.label :積水 %>
+<div class="bisecting_box">
+  <div class="bisecting_1">
+    <%= form.label :name,class: "bisecting_content_1" %>
+    <%= form.text_field :name  ,class: "bisecting_content_2"%>
   </div>
 
-  <div class="field">
-    <%= form.label :sekisui_num %>
-    <%= form.text_field :sekisui_num %>
+  <div class="bisecting_2">
+    <%= form.label :type_div ,class: "bisecting_content_1"%>
+    <%= form.select :type_div, Building.type_divs.keys.map{|k| [I18n.t("enums.building.type_div.#{k}"),k]} , {} ,class: "bisecting_content_2"%>
+  </div>
+</div>
+
+<div class="bisecting_box">
+  <div class="bisecting_1">
+    <%= form.label :sekisui_div,class: "bisecting_content_1" %>
+    <div class="bisecting_content_2">
+      <%= form.radio_button :sekisui_div , :general  %>
+      <%= form.label :一般 %>
+
+      <%= form.radio_button :sekisui_div ,:sekisui %>
+      <%= form.label :積水 %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :type_div %>
-    <%= form.select :type_div, Building.type_divs.keys.map{|k| [I18n.t("enums.building.type_div.#{k}"),k]} , {} ,class: ""%>
+  <div class="bisecting_2">
+    <%= form.label :sekisui_num ,class: "bisecting_content_1" %>
+    <%= form.text_field :sekisui_num ,class: "bisecting_content_2" %>
+  </div>
+</div>
 
-    <%# <%= form.label :type_div %>
-    <%# <%= form.number_field :type_div %>
+<div class="bisecting_box">
+  <div class="bisecting_1">
+    <%= form.label :zip_cd,class: "bisecting_content_1" %>
+    <%= form.text_field :zip_cd  ,class: "bisecting_content_2"%>
   </div>
 
-  <div class="field">
-    <%= form.label :zip_cd %>
-    <%= form.text_field :zip_cd %>
+  <div class="bisecting_2">
+    <%= form.label :address,class: "bisecting_content_1" %>
+    <%= form.text_field :address  ,class: "bisecting_content_2"%>
+  </div>
+</div>
+
+<div class="bisecting_box">
+  <div class="bisecting_1">
+    <%= form.label :lat,class: "bisecting_content_1" %>
+    <%= form.text_field :lat  ,class: "bisecting_content_2"%>
   </div>
 
-  <div class="field">
-    <%= form.label :lat %>
-    <%= form.text_field :lat %>
+  <div class="bisecting_2">
+    <%= form.label :lon,class: "bisecting_content_1" %>
+    <%= form.text_field :lon  ,class: "bisecting_content_2"%>
+  </div>
+</div>
+
+<div class="bisecting_box">
+  <div class="bisecting_1">
+    <%= form.label :floor,class: "bisecting_content_1" %>
+    <%= form.number_field :floor  ,class: "bisecting_content_2"%>
   </div>
 
-  <div class="field">
-    <%= form.label :lon %>
-    <%= form.text_field :lon %>
+  <div class="bisecting_2">
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :floor %>
-    <%= form.number_field :floor %>
-  </div>
-
-  <div class="field">
-    <%= form.label :memo %>
-    <%= form.text_area :memo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ooya_id %>
-    <%= form.collection_select :ooya_id  ,Ooya.all, :id , :full_name %>
-
-    <%# <%= form.text_field :ooya_id %>
+  <div class="line_info_multiline">
+    <%= form.label  :memo,class: "bisecting_content_1" %>
+    <%= form.text_area :memo  ,class: "bisecting_content_2" %>
   </div>
 
   <div class="actions">
