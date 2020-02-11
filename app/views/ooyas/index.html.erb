@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ooyas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Surname</th>
+      <th>Name</th>
+      <th>Surname kana</th>
+      <th>Name kana</th>
+      <th>Zip cd</th>
+      <th>Address1</th>
+      <th>Address2</th>
+      <th>Tel</th>
+      <th>Mobile</th>
+      <th>Memo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ooyas.each do |ooya| %>
+      <tr>
+        <td><%= ooya.surname %></td>
+        <td><%= ooya.name %></td>
+        <td><%= ooya.surname_kana %></td>
+        <td><%= ooya.name_kana %></td>
+        <td><%= ooya.zip_cd %></td>
+        <td><%= ooya.address1 %></td>
+        <td><%= ooya.address2 %></td>
+        <td><%= ooya.tel %></td>
+        <td><%= ooya.mobile %></td>
+        <td><%= ooya.memo %></td>
+        <td><%= link_to 'Show', ooya %></td>
+        <td><%= link_to 'Edit', edit_ooya_path(ooya) %></td>
+        <td><%= link_to 'Destroy', ooya, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ooya', new_ooya_path %>

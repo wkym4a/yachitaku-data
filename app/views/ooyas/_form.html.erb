@@ -1,0 +1,67 @@
+<%= form_with(model: ooya, local: true) do |form| %>
+  <% if ooya.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ooya.errors.count, "error") %> prohibited this ooya from being saved:</h2>
+
+      <ul>
+        <% ooya.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :surname %>
+    <%= form.text_field :surname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :surname_kana %>
+    <%= form.text_field :surname_kana %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name_kana %>
+    <%= form.text_field :name_kana %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip_cd %>
+    <%= form.text_field :zip_cd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address1 %>
+    <%= form.text_field :address1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address2 %>
+    <%= form.text_field :address2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tel %>
+    <%= form.text_field :tel %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mobile %>
+    <%= form.text_field :mobile %>
+  </div>
+
+  <div class="field">
+    <%= form.label :memo %>
+    <%= form.text_area :memo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
