@@ -6,16 +6,13 @@ class OoyasController < ApplicationController
   end
 
   def show
-    set_buildings
   end
 
   def new
     @ooya = Ooya.new
-    set_buildings
   end
 
   def edit
-    set_buildings
   end
 
   def create
@@ -47,12 +44,8 @@ class OoyasController < ApplicationController
     def set_ooya
       @ooya = Ooya.find(params[:id])
     end
-    def set_buildings
-      # @buildings = @ooya.buildings
-    end
 
     def ooya_params
-            params.require(:ooya).permit(:surname, :name, :surname_kana, :name_kana, :zip_cd, :address1, :address2, :tel, :mobile, :memo)
-      # params.require(:ooya).permit(:surname, :name, :surname_kana, :name_kana, :zip_cd, :address1, :address2, :tel, :mobile, :memo,buildings_attributes: [:id, :name, :sekisui_div,:type_div, :_destroy])
+      params.require(:ooya).permit(:surname, :name, :surname_kana, :name_kana, :zip_cd, :address1, :address2, :tel, :mobile, :memo,buildings_attributes: [:id, :name, :sekisui_div,:type_div, :_destroy])
     end
 end

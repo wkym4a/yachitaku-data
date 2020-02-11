@@ -1,6 +1,6 @@
 class Ooya < ApplicationRecord
   has_many :buildings , dependent: :nullify
-
+  accepts_nested_attributes_for :buildings, allow_destroy: true 
 
   def full_name
     "#{self.surname} #{self.name}"
