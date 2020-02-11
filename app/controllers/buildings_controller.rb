@@ -1,4 +1,7 @@
 class BuildingsController < ApplicationController
+  #ログインしているかどうかをチェック
+  before_action :authenticate_user!
+  
   before_action :set_building, only: [:show, :edit, :update, :destroy]
 
   def index
