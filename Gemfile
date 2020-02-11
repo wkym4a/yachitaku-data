@@ -25,6 +25,11 @@ gem 'nested_form_fields'
 #環境ファイル「.env」を管理するために追加
 gem 'dotenv-rails'
 
+#権限間利用に追加
+gem 'devise'
+gem 'cancancan'
+gem 'rails_admin'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
