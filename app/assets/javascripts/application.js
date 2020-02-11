@@ -11,6 +11,13 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery3
+//= require jquery_ujs
 //= require activestorage
-//= require turbolinks
+//= require popper
+//= require bootstrap-sprockets
 //= require_tree .
+//= require nested_form_fields
+//= require turbolinks
+
+// import 'babel-polyfill';
