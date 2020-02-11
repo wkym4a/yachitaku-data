@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Buildings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sekisui div</th>
+      <th>Sekisui num</th>
+      <th>Type div</th>
+      <th>Zip cd</th>
+      <th>Lat</th>
+      <th>Lon</th>
+      <th>Floor</th>
+      <th>Memo</th>
+      <th>Ooya</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buildings.each do |building| %>
+      <tr>
+        <td><%= building.name %></td>
+        <td><%= building.sekisui_div %></td>
+        <td><%= building.sekisui_num %></td>
+        <td><%= building.type_div %></td>
+        <td><%= building.zip_cd %></td>
+        <td><%= building.lat %></td>
+        <td><%= building.lon %></td>
+        <td><%= building.floor %></td>
+        <td><%= building.memo %></td>
+        <td><%= building.ooya_id %></td>
+        <td><%= link_to 'Show', building %></td>
+        <td><%= link_to 'Edit', edit_building_path(building) %></td>
+        <td><%= link_to 'Destroy', building, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Building', new_building_path %>

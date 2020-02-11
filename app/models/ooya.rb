@@ -1,4 +1,5 @@
 class Ooya < ApplicationRecord
+  has_many :buildings , dependent: :nullify
 
 
   def full_name

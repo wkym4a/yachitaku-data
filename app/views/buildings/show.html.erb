@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @building.name %>
+</p>
+
+<p>
+  <strong>Sekisui div:</strong>
+  <%= @building.sekisui_div %>
+</p>
+
+<p>
+  <strong>Sekisui num:</strong>
+  <%= @building.sekisui_num %>
+</p>
+
+<p>
+  <strong>Type div:</strong>
+  <%= @building.type_div %>
+</p>
+
+<p>
+  <strong>Zip cd:</strong>
+  <%= @building.zip_cd %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @building.lat %>
+</p>
+
+<p>
+  <strong>Lon:</strong>
+  <%= @building.lon %>
+</p>
+
+<p>
+  <strong>Floor:</strong>
+  <%= @building.floor %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @building.memo %>
+</p>
+
+<p>
+  <strong>Ooya:</strong>
+  <%= @building.ooya_id %>
+</p>
+
+<%= link_to 'Edit', edit_building_path(@building) %> |
+<%= link_to 'Back', buildings_path %>

@@ -1,0 +1,77 @@
+<%= form_with(model: building, local: true) do |form| %>
+  <% if building.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(building.errors.count, "error") %> prohibited this building from being saved:</h2>
+
+      <ul>
+        <% building.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sekisui_div %>
+
+    <%= form.radio_button :sekisui_div , :general  %>
+    <%= form.label :一般 %>
+
+    <%= form.radio_button :sekisui_div ,:sekisui %>
+    <%= form.label :積水 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sekisui_num %>
+    <%= form.text_field :sekisui_num %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type_div %>
+    <%= form.select :type_div, Building.type_divs.keys.map{|k| [I18n.t("enums.building.type_div.#{k}"),k]} , {} ,class: ""%>
+
+    <%# <%= form.label :type_div %>
+    <%# <%= form.number_field :type_div %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip_cd %>
+    <%= form.text_field :zip_cd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lat %>
+    <%= form.text_field :lat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lon %>
+    <%= form.text_field :lon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :floor %>
+    <%= form.number_field :floor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :memo %>
+    <%= form.text_area :memo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ooya_id %>
+    <%= form.collection_select :ooya_id  ,Ooya.all, :id , :full_name %>
+
+    <%# <%= form.text_field :ooya_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

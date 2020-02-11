@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  sekisui_div: 1
+  sekisui_num: MyString
+  type_div: 1
+  lat: 1.5
+  lon: 1.5
+  zip_cd: MyString
+  address: MyString
+  floor: 1
+  memo: MyText
+  ooya: one
+
+two:
+  name: MyString
+  sekisui_div: 1
+  sekisui_num: MyString
+  type_div: 1
+  lat: 1.5
+  lon: 1.5
+  zip_cd: MyString
+  address: MyString
+  floor: 1
+  memo: MyText
+  ooya: two
