@@ -1,0 +1,40 @@
+ja:
+  activerecord:
+    models:
+      ooya: オーナー
+      building: 建物
+    attributes:
+      ooya:
+        surname: 姓
+        name: 名
+        surname_kana: 姓(かな)
+        name_kana: 名(かな)
+        zip_cd: 郵便番号
+        address: 住所
+        address1: 住所1
+        address2: 住所2
+        tel: 電話
+        mobile: 携帯
+        memo: 備考
+      building:
+        name: 建物名
+        sekisui_div: 積水区分
+        sekisui_num: 積水物件No
+        type_div: 種別
+        zip_cd: 郵便番号
+        address: 住所
+        lat: 緯度
+        lon: 経度
+        floor: 階数
+        memo: 備考
+  enums:
+    building:
+      sekisui_div:
+        general: 一般
+        sekisui: 積水
+      type_div:
+        apartment: アパート
+        mansion: マンション
+        house: 戸建て
+        rental_store: 貸店舗
+        parking: 駐車場
