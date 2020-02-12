@@ -25,4 +25,12 @@ class Ooya < ApplicationRecord
     "〒#{self.zip_cd[0,3]}-#{self.zip_cd[3,4]}"
   end
 
+  def full_address
+    if self.zip_cd.length == 7
+      "#{self.zip_cd_show} #{self.address1} #{self.address2}"
+    else
+      "#{self.address1} #{self.address2}"
+    end
+  end
+
 end

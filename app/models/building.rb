@@ -21,4 +21,24 @@ class Building < ApplicationRecord
     rental_store: 9, #貸店舗
     parking: 99 #駐車場
   }
+
+
+  def zip_cd_show
+    "〒#{self.zip_cd[0,3]}-#{self.zip_cd[3,4]}"
+  end
+  def full_address
+    if self.zip_cd.length == 7
+      "#{self.zip_cd_show} #{self.address}"
+    else
+      "#{self.address}"
+    end
+  end
+  def sekisui_num_info
+    if self.sekisui_div_i18n == "積水"
+      self.sekisui_num
+    else
+      "一般物件"
+    end
+  end
+
 end

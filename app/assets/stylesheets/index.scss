@@ -1,0 +1,53 @@
+
+.table_box{
+  min-width: 900px;
+  max-width: 1200px;
+  margin:  0 40px;
+  border-style: double;
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table_title_row > th{
+  border-style: solid;
+  border-width: 0.2px;
+  text-align: center;
+  padding: auto 0;
+}
+
+.table_row > td{
+  border-style: solid;
+  border-width: 0.2px;
+  word-break: break-all;
+  padding: auto 0;
+}
+
+.table_content_type{
+  min-width: 80px;
+}
+.table_content_people_name{
+  min-width: 110px;
+}
+.table_content_building_name{
+  min-width: 140px;
+}
+.table_content_7_num{
+  min-width: 80px;
+}
+.table_content_address{
+  min-width: 300px;
+}
+.table_content_floor{
+  min-width: 60px;
+}
+.table_content_memo{
+  min-width: 400px;
+}
+.table_content_btn{
+  min-width: 60px;
+}
+.table_content_tel{
+  min-width: 120px;
+}
