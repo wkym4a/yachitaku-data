@@ -44,46 +44,82 @@
   </div>
 </div>
 
-<div class="bisecting_box">
-  <div class="bisecting_1">
-    <%= form.label :zip_cd,class: "bisecting_content_1" %>
-    <%= form.text_field :zip_cd  ,class: "bisecting_content_2"%>
+<span data-controller="set-pin">
+  <%# decided_flg→画面初期状態で座標が決定されているかどうか %>
+  <%# 新規画面ではまだ座標登録されていないので「false」 %>
+  <%# 更新画面ではすでに座標登録されているので「true」 %>
+  <% if request.path_info == "/buildings/new" %>
+  <%= form.hidden_field :decided_flg,:value => false ,:data => {:target => "set-pin.decided_flg"} %>
+  <% else %>
+  <%= form.hidden_field :decided_flg,:value => true ,:data => {:target => "set-pin.decided_flg"} %>
+  <% end %>
+
+  <div  id = "map" class="set_pin_map" data-target="set-pin.map"></div>
+
+  <%= render 'layouts/shared/yahoo_attribution' %>
+
+  <div class="bisecting_box">
+    <div class="bisecting_1">
+      <%= form.label :lat,class: "bisecting_content_1" %>
+        <%= form.text_field :lat ,class: "bisecting_content_2",:data => {:target => "set-pin.lat"} %>
+
+      <%# <%= form.text_field :lat  ,class: "bisecting_content_2"%>
+    </div>
+
+    <div class="bisecting_2">
+      <%= form.label :lon,class: "bisecting_content_1" %>
+      <%= form.text_field :lon  ,class: "bisecting_content_2",:data => {:target => "set-pin.lon"}%>
+    </div>
   </div>
 
-  <div class="bisecting_2">
-    <%= form.label :address,class: "bisecting_content_1" %>
-    <%= form.text_field :address  ,class: "bisecting_content_2"%>
-  </div>
-</div>
+  <br>
+  <div class="bisecting_box">
+     【📍位置確定処理】
+     <a id="btn_set_address_by_latlon" class='btn btn-primary' data-action="set-pin#set_address_by_latlon" data-target="set-pin.btn_set">座標<br>↓<br>住所</a>
 
-<div class="bisecting_box">
-  <div class="bisecting_1">
-    <%= form.label :lat,class: "bisecting_content_1" %>
-    <%= form.text_field :lat  ,class: "bisecting_content_2"%>
-  </div>
+     <a id="btn_set_latlon_by_address" class='btn btn-primary' data-action="set-pin#set_latlon_by_address" data-target="set-pin.btn_set">座標<br>↑<br>住所</a>
 
-  <div class="bisecting_2">
-    <%= form.label :lon,class: "bisecting_content_1" %>
-    <%= form.text_field :lon  ,class: "bisecting_content_2"%>
+     <a id="btn_reset_latlon" class='btn btn-primary' data-action="set-pin#reset_latlon" data-target="set-pin.btn_reset">座標確定解除</a>
   </div>
-</div>
+  <br>
 
-<div class="bisecting_box">
-  <div class="bisecting_1">
-    <%= form.label :floor,class: "bisecting_content_1" %>
-    <%= form.number_field :floor  ,class: "bisecting_content_2"%>
+  <div class="bisecting_box">
+    <%# ↓エラーメッセージ等表示枠 %>
+    <a  data-target="set-pin.msg"></a>
   </div>
 
-  <div class="bisecting_2">
+  <div class="bisecting_box">
+    <div class="bisecting_1">
+      <%= form.label :zip_cd,class: "bisecting_content_1" %>
+      <%= form.text_field :zip_cd  ,class: "bisecting_content_2"%>
+    </div>
+
+    <div class="bisecting_2">
+      <%= form.label :address,class: "bisecting_content_1 " %>
+      <%= form.text_field :address ,class: "bisecting_content_2 " ,:data => {:target => "set-pin.address"}%>
+      <%# <%= form.text_field :address  ,class: "bisecting_content_2"%>
+    </div>
   </div>
-</div>
+
+  <div class="bisecting_box">
+    <div class="bisecting_1">
+      <%= form.label :floor,class: "bisecting_content_1" %>
+      <%= form.number_field :floor  ,class: "bisecting_content_2"%>
+    </div>
+
+    <div class="bisecting_2">
+    </div>
+  </div>
 
   <div class="line_info_multiline">
     <%= form.label  :memo,class: "bisecting_content_1" %>
-    <%= form.text_area :memo  ,class: "bisecting_content_2" %>
+    <%= form.text_area :memo  ,class: "bisecting_content_2 input_text_content" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="bisecting_box">
+      <%= form.submit  "登録" , class: 'btn btn-primary line_content_2 ' ,:data => {:target => "set-pin.btn_save"} %>
+    <%# <%= form.submit %>
   </div>
+
+</span>
 <% end %>
