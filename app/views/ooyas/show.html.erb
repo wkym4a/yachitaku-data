@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h2>大家情報</h2>
-<%= link_to '大家情報編集', edit_ooya_path(@ooya), class: 'btn btn-primary' %>
+<div class="line_info">
+  <h2 class = "line_content_1">オーナー情報</h2>
+  <%= link_to 'オーナー情報編集', edit_ooya_path(@ooya), class: 'btn btn-primary line_content_4' %>
+</div>
+<br>
 
 <p>
   <strong>名前:</strong>
@@ -30,5 +33,20 @@
   <%= @ooya.memo %>
 </p>
 
+<br><br>
+
+<div class="line_info">
+  <h3 class = "line_content_1">オーナー所有の建物</h3>
+  <%=  link_to "建物追加",new_building_path(ooya_id:  @ooya.id)  ,class: "btn btn-primary line_content_4" %>
+</div>
+<br>
+<ul>
+  <% @buildings.each do |building| %>
+    <li class="line_info">
+      <%= building.name + "→" %>
+      <%= link_to "編集", edit_building_path(building.id), class: 'btn btn-primary'  %>
+    </li>
+  <% end %>
+</ul>
 
 <%= link_to 'Back', ooyas_path %>

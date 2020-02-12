@@ -1,6 +1,14 @@
 class Building < ApplicationRecord
   belongs_to :ooya
 
+  ####↓↓↓↓バリデーション情報↓↓↓↓############
+  validates :name, length: { maximum: 20 }
+  validates :sekisui_num, length: { maximum: 7 }
+  validates :zip_cd, length: { maximum: 7 }
+  validates :address, length: { maximum: 200 }
+  validates :memo, length: { maximum: 800 }
+  ####↑↑↑↑バリデーション情報↑↑↑↑############
+
   enum sekisui_div:{
     general: 0, #一般
     sekisui: 1 #積水

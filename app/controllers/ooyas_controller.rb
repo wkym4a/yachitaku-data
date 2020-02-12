@@ -9,6 +9,7 @@ class OoyasController < ApplicationController
   end
 
   def show
+    @buildings = @ooya.buildings
   end
 
   def new

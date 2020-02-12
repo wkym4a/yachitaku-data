@@ -1,7 +1,7 @@
 class BuildingsController < ApplicationController
   #ログインしているかどうかをチェック
   before_action :authenticate_user!
-  
+
   before_action :set_building, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -12,7 +12,8 @@ class BuildingsController < ApplicationController
   end
 
   def new
-    @building = Building.new
+    # 「大家」のshow画面から遷移した場合は、その大家を初期設定とする。
+    @building = Building.new(ooya_id: params[:ooya_id])
   end
 
   def edit

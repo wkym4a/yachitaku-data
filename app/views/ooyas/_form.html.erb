@@ -72,7 +72,11 @@
   </div>
 
   <br>
-  <h4>【所有する物件】</h4>
+  <div class="line_info">
+    <h3 class = "line_content_1">【所有する建物】</h3>
+    <%= form.add_nested_fields_link :buildings, '建物追加', class: 'btn btn-primary line_content_4', role: 'button' %>
+  </div>
+  <br>
   <table class="table table-striped table-bordered table-hover">
     <tbody>
       <tr>
@@ -80,7 +84,7 @@
         <th>積水区分</th>
         <th>種別</th>
         <th></th>
-        <th>建物編集ボタン（予定）</th>
+        <th></th>
       </tr>
       <%= form.nested_fields_for :buildings, ooya.buildings.order(:name) , wrapper_tag: :tr do |q| %>
          <td><%= q.text_field   :name,     class: 'form-control' %></td>
@@ -94,13 +98,12 @@
         <td>
           <%= q.select :type_div, Building.type_divs.keys.map{|k| [I18n.t("enums.building.type_div.#{k}"),k]} , {} ,class: ""%>
         </td>
-        <td><%= q.remove_nested_fields_link '物件削除', class: 'btn btn-danger', role: 'button' %></td>
-
-        <td><%= "sqae" if q.object.id.present? %></td>
+        <td><%= link_to "建物詳細編集", edit_building_path(q.object.id), class: 'btn btn-primary' if q.object.id.present? %></td>
+        <td><%= q.remove_nested_fields_link '建物削除', class: 'btn btn-danger', role: 'button' %></td>
       <% end %>
      </tbody>
    </table>
-   <%= form.add_nested_fields_link :buildings, 'Add new', class: 'btn btn-primary', role: 'button' %>
+
 
 
 

@@ -13,10 +13,11 @@
 
   <body>
     <header class="head_bar">
+      <h3 class="head_title" ><%= link_to "物件データ管理", root_path %></h3>
       <% if user_signed_in? %>
 
         <span>「<%= current_user.email.to_s %>」でログインしています。</span>
-        <%= link_to "ログアウトする", destroy_user_session_path, method: :delete, class: 'btn btn-primary'  %>
+        <%= link_to "ログアウトする", destroy_user_session_path, method: :delete, class: 'btn btn-primary '  %>
 
         <%= link_to "ユーザー情報", user_path(current_user.id), class: 'btn btn-primary'  %>
 
