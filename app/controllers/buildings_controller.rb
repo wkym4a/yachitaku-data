@@ -48,6 +48,6 @@ class BuildingsController < ApplicationController
     end
 
     def building_params
-      params.require(:building).permit(:name, :sekisui_div, :sekisui_num, :type_div, :zip_cd, :lat, :lon, :floor, :memo, :ooya_id)
+      params.require(:building).permit(:name, :sekisui_div, :sekisui_num, :type_div, :zip_cd, :address ,:lat, :lon, :floor, :memo, :ooya_id)
     end
 end

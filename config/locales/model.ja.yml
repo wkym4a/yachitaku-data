@@ -19,7 +19,7 @@ ja:
       building:
         name: 建物名
         sekisui_div: 積水区分
-        sekisui_num: 積水物件No
+        sekisui_num: 積水No
         type_div: 種別
         zip_cd: 郵便番号
         address: 住所
