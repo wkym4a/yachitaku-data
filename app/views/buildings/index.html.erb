@@ -2,9 +2,33 @@
 
 <div class="line_info">
   <h3 class = "line_content_1">建物一覧</h3>
-  <%= link_to '新規作成', new_building_path , class: 'btn btn-primary line_content_4'%>
+<%= link_to '新規作成', new_building_path , class: 'btn btn-primary line_content_3'%>
 </div>
 
+<br>
+
+<%= search_form_for @q do |f| %>
+
+  <div class="line_info">
+    <%= f.label :name, "建物名", class: ' line_content_1' %>
+    <%= f.search_field :name_cont, class: ' line_content_2' %>
+  </div>
+  <div class="line_info">
+    <%= f.label :ooya_surname, "大家（名字）", class: ' line_content_1' %>
+    <%= f.search_field :ooya_surname_cont, class: ' line_content_2' %>
+  </div>
+  <div class="line_info">
+    <%= f.label :ooya_name, "大家（名前）", class: ' line_content_1' %>
+    <%= f.search_field :ooya_name_cont, class: ' line_content_2' %>
+  </div>
+  <div class="line_info">
+    <%= f.submit "検索", class: ' line_content_4' %>
+  </div>
+<% end %>
+
+  <div class="line_info">
+
+</div>
 <br>
 
 <table class="table_box">

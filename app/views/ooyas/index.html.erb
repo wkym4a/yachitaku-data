@@ -7,6 +7,29 @@
 
 <br>
 
+<%= search_form_for @q do |f| %>
+
+
+  <div class="line_info">
+    <%= f.label :surname, "姓", class: ' line_content_1' %>
+    <%= f.search_field :surname_cont, class: ' line_content_2' %>
+  </div>
+  <div class="line_info">
+    <%= f.label :name, "名", class: ' line_content_1' %>
+    <%= f.search_field :name_cont, class: ' line_content_2' %>
+  </div>
+  <div class="line_info">
+    <%= f.label :buildings_name, "保有建物", class: ' line_content_1' %>
+    <%= f.search_field :buildings_name_cont, class: ' line_content_2' %>
+  </div>
+
+  <div class="line_info">
+    <%= f.submit "検索", class: ' line_content_4' %>
+  </div>
+<% end %>
+
+<br>
+
 <table class="table_box">
   <%= render 'index_box', ooyas: @ooyas %>
 </table>

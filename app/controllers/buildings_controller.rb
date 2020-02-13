@@ -5,7 +5,9 @@ class BuildingsController < ApplicationController
   before_action :set_building, only: [:show, :edit, :update, :destroy]
 
   def index
-    @buildings = Building.all
+    @q = Building.ransack(params[:q])
+    @buildings = @q.result(distinct: true)
+    # @buildings = Building.all
   end
 
   def show

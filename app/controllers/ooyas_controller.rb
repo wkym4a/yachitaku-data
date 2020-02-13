@@ -5,7 +5,9 @@ class OoyasController < ApplicationController
   before_action :set_ooya, only: [:show, :edit, :update, :destroy]
 
   def index
-    @ooyas = Ooya.all
+    @q = Ooya.ransack(params[:q])
+    @ooyas = @q.result(distinct: true)
+    # @ooyas = Ooya.all
   end
 
   def show
