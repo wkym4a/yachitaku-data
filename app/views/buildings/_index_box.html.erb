@@ -1,0 +1,37 @@
+<thead>
+  <tr class= "table_title_row">
+    <th class= "table_content_type">種類</th>
+    <th class= "table_content_people_name">大家</th>
+    <th class= "table_content_building_name">名前</th>
+    <th class= "table_content_7_num">積水No</th>
+    <th class= "table_content_address">住所</th>
+    <th class= "table_content_floor">階数</th>
+    <th class= "table_content_memo">備考</th>
+    <th colspan="3" class= "table_content_btn"></th>
+  </tr>
+</thead>
+
+<tbody>
+
+  <% buildings.each do |building| %>
+    <tr class= "table_row">
+      <td class= "table_content_type"><%= building.type_div_i18n %></td>
+      <td class= "table_content_people_name">
+        <% if building.ooya.present? %>
+          <%= building.ooya.full_name %>
+        <% else %>
+          <%= "オーナー未設定" %>
+        <% end %>
+      </td>
+      <td class= "table_content_building_name"><%= building.name %></td>
+      <td class= "table_content_7_num"><%= building.sekisui_num_info %></td>
+      <td class= "table_content_address"><%= building.full_address %></td>
+      <td class= "table_content_floor"><%= "#{building.floor}階" %></td>
+      <td class= "table_content_memo"><%= building.memo %></td>
+      <td class= "table_content_btn"><%= link_to '閲覧', building , class: 'btn btn-primary btn-sm' %></td>
+      <td class= "table_content_btn"><%= link_to '編集', edit_building_path(building) , class: 'btn btn-primary btn-sm' %></td>
+      <td class= "table_content_btn"><%= link_to '削除', building, method: :delete, data: { confirm: '削除します。よろしいですか?' } , class: 'btn btn-primary btn-sm' %></td>
+    </tr>
+  <% end %>
+
+</tbody>

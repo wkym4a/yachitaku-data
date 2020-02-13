@@ -23,23 +23,25 @@ class BuildingsController < ApplicationController
     @building = Building.new(building_params)
 
     if @building.save
-      redirect_to @building, notice: 'Building was successfully created.'
+      redirect_to @building, notice: '建物情報を作成しました。'
     else
+      flash[:danger] = @building.errors.full_messages
       render :new
     end
   end
 
   def update
     if @building.update(building_params)
-      redirect_to @building, notice: 'Building was successfully updated.'
+      redirect_to @building, notice: '建物情報を更新しました。'
     else
+      flash[:danger] = @building.errors.full_messages
       render :edit
     end
   end
 
   def destroy
     @building.destroy
-    redirect_to buildings_url, notice: 'Building was successfully destroyed.'
+    redirect_to buildings_url, notice: '建物情報を削除しました。'
   end
 
   private

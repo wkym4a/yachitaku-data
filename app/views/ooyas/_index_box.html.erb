@@ -1,0 +1,26 @@
+
+  <thead>
+    <tr class= "table_title_row">
+      <th class= "table_content_people_name">名前</th>
+      <th class= "table_content_address">住所</th>
+      <th class= "table_content_tel">Tel</th>
+      <th class= "table_content_tel">携帯</th>
+      <th class= "table_content_memo">備考</th>
+      <th class= "table_content_btn" colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% ooyas.each do |ooya| %>
+      <tr class= "table_row">
+        <td class= "table_content_people_name"><%= ooya.full_name %></td>
+        <td class= "table_content_address"><%= ooya.full_address %></td>
+        <td class= "table_content_tel"><%= ooya.tel %></td>
+        <td class= "table_content_tel"><%= ooya.mobile %></td>
+        <td class= "table_content_memo"><%= ooya.memo %></td>
+        <td class= "table_content_btn"><%= link_to '閲覧', ooya , class: 'btn btn-primary btn-sm' %></td>
+        <td class= "table_content_btn"><%= link_to '編集', edit_ooya_path(ooya) , class: 'btn btn-primary btn-sm' %></td>
+        <td class= "table_content_btn"><%= link_to '削除', ooya, method: :delete, data: { confirm: '削除します。よろしいですか?' } , class: 'btn btn-primary btn-sm' %></td>
+      </tr>
+    <% end %>
+  </tbody>

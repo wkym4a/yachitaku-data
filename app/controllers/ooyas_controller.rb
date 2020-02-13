@@ -23,16 +23,18 @@ class OoyasController < ApplicationController
     @ooya = Ooya.new(ooya_params)
 
     if @ooya.save
-      redirect_to @ooya, notice: 'Ooya was successfully created.'
+      redirect_to @ooya, notice: 'オーナー情報を作成しました。'
     else
+      flash[:danger] = @ooya.errors.full_messages
       render :new
     end
   end
 
   def update
     if @ooya.update(ooya_params)
-      redirect_to @ooya, notice: 'Ooya was successfully updated.'
+      redirect_to @ooya, notice: 'オーナー情報を更新しました。'
     else
+      flash[:danger] = @ooya.errors.full_messages
       render :edit
     end
   end
@@ -41,7 +43,7 @@ class OoyasController < ApplicationController
   # DELETE /ooyas/1.json
   def destroy
     @ooya.destroy
-    redirect_to ooyas_path, notice: 'Ooya was successfully destroyed.'
+    redirect_to ooyas_path, notice: 'オーナー情報を削除しました。'
   end
 
   private

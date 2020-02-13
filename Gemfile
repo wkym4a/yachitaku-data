@@ -32,6 +32,9 @@ gem 'rails_admin'
 
 gem 'enum_help'
 
+#検索用にランサックを使ってみる
+gem 'ransack'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
