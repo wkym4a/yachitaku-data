@@ -1,53 +1,43 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>建物名:</strong>
   <%= @building.name %>
 </p>
 
 <p>
-  <strong>Sekisui div:</strong>
-  <%= @building.sekisui_div %>
+  <strong>種別:</strong>
+  <%= @building.type_div_i18n %>
 </p>
 
 <p>
-  <strong>Sekisui num:</strong>
-  <%= @building.sekisui_num %>
+  <strong>積水No:</strong>
+  <%= @building.sekisui_num_info %>
+</p>
+
+
+<p>
+  <strong>住所:</strong>
+  <%= @building.full_address %>
 </p>
 
 <p>
-  <strong>Type div:</strong>
-  <%= @building.type_div %>
+  <strong>階数:</strong>
+  <%= @building.floor %>階
 </p>
 
 <p>
-  <strong>Zip cd:</strong>
-  <%= @building.zip_cd %>
-</p>
-
-<p>
-  <strong>Lat:</strong>
-  <%= @building.lat %>
-</p>
-
-<p>
-  <strong>Lon:</strong>
-  <%= @building.lon %>
-</p>
-
-<p>
-  <strong>Floor:</strong>
-  <%= @building.floor %>
-</p>
-
-<p>
-  <strong>Memo:</strong>
+  <strong>備考:</strong>
   <%= @building.memo %>
 </p>
 
 <p>
-  <strong>Ooya:</strong>
-  <%= @building.ooya_id %>
+  <strong>オーナー:</strong>
+  <% if @building.ooya.present? %>
+    <%= @building.ooya.full_name %>
+  <% else %>
+    <%= "オーナー未設定" %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_building_path(@building) %> |
