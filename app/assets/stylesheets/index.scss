@@ -1,13 +1,23 @@
 
-.table_box{
+
+.table-scroll-host {
+
   min-width: 900px;
   max-width: 1200px;
+
+  height: 350px;
+  grid-area: content;
+  overflow: scroll;
+
   margin:  0 40px;
   border-style: double;
   display: block;
-  overflow-x: scroll;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
+}
+.table_box th {
+  position: sticky;
+  top: 0;
+  background-color: gray;
+  // color: white;
 }
 
 .table_title_row > th{
@@ -47,6 +57,7 @@
 }
 .table_content_btn{
   min-width: 60px;
+  // width: 9999999px;
 }
 .table_content_tel{
   min-width: 120px;
