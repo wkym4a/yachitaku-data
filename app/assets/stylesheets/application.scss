@@ -260,11 +260,25 @@
      height: 120px;
    }
 
-
    .line_content_2_large_interval{
      left: 180px;
    }
-   ////////↑
+
+  .line_info_memo{
+    position: relative;
+    height: 500px;
+  }
+  .memo_label{
+    position: relative;
+    vertical-align: top;
+    left: 30px;
+    width: 100px;
+  }
+  .memo_text_area{
+    height: 480px;
+    width: 700px;
+  }
+  ////////↑
 
 
   .form_title{

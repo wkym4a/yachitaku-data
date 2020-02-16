@@ -28,25 +28,32 @@
   <%= @ooya.mobile %>
 </p>
 
+
+<br>
+
+<div class="show_children_box">
+
+  <div class="line_info">
+    <h3 class = "line_content_1">オーナー所有の建物</h3>
+    <%=  link_to "建物追加",new_building_path(ooya_id:  @ooya.id)  ,class: "btn btn-primary line_content_4" %>
+  </div>
+  <br>
+  <ul>
+    <% @buildings.each do |building| %>
+      <li class="line_info">
+        <%= building.name + "→" %>
+        <%= link_to "編集", edit_building_path(building.id), class: 'btn btn-primary'  %>
+      </li>
+    <% end %>
+  </ul>
+
+</div>
+
+<br><br>
+
 <p>
   <strong>備考:</strong>
   <%= @ooya.memo %>
 </p>
-
-<br><br>
-
-<div class="line_info">
-  <h3 class = "line_content_1">オーナー所有の建物</h3>
-  <%=  link_to "建物追加",new_building_path(ooya_id:  @ooya.id)  ,class: "btn btn-primary line_content_4" %>
-</div>
-<br>
-<ul>
-  <% @buildings.each do |building| %>
-    <li class="line_info">
-      <%= building.name + "→" %>
-      <%= link_to "編集", edit_building_path(building.id), class: 'btn btn-primary'  %>
-    </li>
-  <% end %>
-</ul>
 
 <%= link_to 'Back', ooyas_path %>
