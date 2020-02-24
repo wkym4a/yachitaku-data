@@ -1,4 +1,6 @@
 class OoyasController < ApplicationController
+  require 'rubyXL/convenience_methods'
+
   #ログインしているかどうかをチェック
   before_action :authenticate_user!
 
@@ -8,6 +10,16 @@ class OoyasController < ApplicationController
     @q = Ooya.ransack(params[:q])
     @ooyas = @q.result(distinct: true)
     # @ooyas = Ooya.all
+
+    if params[:export]
+      @ooyas.export_info
+      # send_data @ooyas.export, filename: "#{Time.current.strftime('%Y%m%d')}.csv"
+      # send_data @ooyas.export, filename: "#{Time.current.strftime('%Y%m%d')}.csv"
+
+    else
+
+      # @ooyas = @q.result(distinct: true)
+    end
   end
 
   def show

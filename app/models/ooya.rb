@@ -1,4 +1,6 @@
 class Ooya < ApplicationRecord
+  require 'rubyXL/convenience_methods'
+
   has_many :buildings , dependent: :nullify
   accepts_nested_attributes_for :buildings, allow_destroy: true
 
@@ -33,4 +35,79 @@ class Ooya < ApplicationRecord
     end
   end
 
+    def self.export_info
+      workbook = RubyXL::Workbook.new
+
+      sheet = workbook[0]
+
+      contents_sheet = workbook.first
+
+      contents_sheet.add_cell(0, 0 , "《大家名称》" )
+      contents_sheet.add_cell(0, 1 , "詳細シートへのリンク" )
+
+      row=0
+      all.each{|ooya|
+        ooya_sheet = workbook.add_worksheet(ooya.full_name.gsub(" ", ""))
+        ooya_sheet.add_cell(1, 0 , "大家名称" )
+        ooya_sheet.add_cell(1, 1 , ooya.full_name )
+        ooya_sheet.add_cell(2, 0 , "住所" )
+        ooya_sheet.add_cell(2, 1 , ooya.full_address )
+        ooya_sheet.add_cell(3, 0 , "電話" )
+        ooya_sheet.add_cell(3, 1 , ooya.tel )
+        ooya_sheet.add_cell(4, 0 , "携帯" )
+        ooya_sheet.add_cell(4, 1 , ooya.mobile )
+        ooya_sheet.add_cell(5, 0 , "備考" )
+        ooya_sheet.add_cell(5, 1 , ooya.memo )
+
+        ooya_sheet.add_cell(7, 1 , "所有物件" )
+        ooya.buildings.each_with_index do |buildind, i|
+          ooya_sheet.add_cell(i + 8, 2 , "●#{buildind.name}" )
+        end
+
+        #目次シートから、「今回の大家についてのシート」へリンクを貼る
+        row += 1
+        contents_sheet.add_cell(row, 0 , ooya.full_name )
+        hyperlink = %Q[HYPERLINK("##{ooya.full_name.gsub(" ", "")}!A1","→リンク")]
+        contents_sheet.add_cell(row, 1 , '', hyperlink )
+      }
+
+      file_name = "大家情報一覧.xlsx"
+
+      workbook.write(file_name)
+
+      `open #{file_name} `
+
+    end
+
 end
+
+
+
+# def self.export_info
+#   @workbook = RubyXL::Workbook.new
+#   @sheet = @workbook.first
+#
+#   row=0
+#   @sheet.add_cell(row, 0, "新規登録の場合、「id」欄は空欄としてください。")
+#
+#   columns = self.column_names
+#
+#   row += 1
+#   columns.each_with_index do |col, i|
+#     @sheet.add_cell(row, i , col )
+#   end
+#
+#   all.each{|ooya|
+#     row += 1
+#
+#     columns.each_with_index do |col, i|
+#       @sheet.add_cell(row, i , ooya[col] )
+#     end
+#   }
+#
+#   file_name = "#{Time.current.strftime('%Y%m%d')}.xlsx"
+#   @workbook.write(file_name)
+#
+#   `open #{file_name} `
+#
+# end

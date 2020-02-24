@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # ユーザープロフィール画面は独自に作成する
   resources :users, only: [:show]
 
-  resources :ooyas
+  resources :ooyas do
+    # collection { get :export_info }
+  end
   resources :buildings
 end
