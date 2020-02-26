@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :ooyas do
-    # collection { get :export_info }
+    collection { get :export_info }
   end
   resources :buildings
 end

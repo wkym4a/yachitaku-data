@@ -7,19 +7,15 @@ class OoyasController < ApplicationController
   before_action :set_ooya, only: [:show, :edit, :update, :destroy]
 
   def index
+
     @q = Ooya.ransack(params[:q])
     @ooyas = @q.result(distinct: true)
-    # @ooyas = Ooya.all
 
     if params[:export]
-      @ooyas.export_info
-      # send_data @ooyas.export, filename: "#{Time.current.strftime('%Y%m%d')}.csv"
-      # send_data @ooyas.export, filename: "#{Time.current.strftime('%Y%m%d')}.csv"
-
-    else
-
-      # @ooyas = @q.result(distinct: true)
+      workbook = @ooyas.export_info
+      send_data workbook.stream.string, filename: 'modified.xlsx'
     end
+
   end
 
   def show

@@ -36,6 +36,8 @@ class Ooya < ApplicationRecord
   end
 
     def self.export_info
+
+      # workbook = RubyXL::Parser.parse file.path
       workbook = RubyXL::Workbook.new
 
       sheet = workbook[0]
@@ -71,11 +73,13 @@ class Ooya < ApplicationRecord
         contents_sheet.add_cell(row, 1 , '', hyperlink )
       }
 
-      file_name = "大家情報一覧.xlsx"
+      # file_name = "大家情報一覧.xlsx"
 
-      workbook.write(file_name)
-
-      `open #{file_name} `
+return workbook
+#       workbook.write(file_name)
+#
+# send_data workbook.stream.string,  filename: 'modified.xlsx'
+      # `open #{file_name} `
 
     end
 
