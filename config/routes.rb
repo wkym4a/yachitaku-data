@@ -14,5 +14,10 @@ Rails.application.routes.draw do
   resources :ooyas do
     collection { get :export_info }
   end
-  resources :buildings
+  
+  resources :buildings do
+    collection do
+      get :index_search
+    end
+  end
 end

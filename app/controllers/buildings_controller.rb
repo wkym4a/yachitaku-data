@@ -5,9 +5,19 @@ class BuildingsController < ApplicationController
   before_action :set_building, only: [:show, :edit, :update, :destroy]
 
   def index
-    @q = Building.ransack(params[:q])
-    @buildings = @q.result(distinct: true)
-    # @buildings = Building.all
+    # @q = Building.ransack(params[:q])
+    # @buildings = @q.result(distinct: true)
+    @buildings = Building.all
+  end
+  def index_search
+    @buildings = Building.
+                search_by_name(params[:conditions][:name]).
+                search_by_ooya_surname(params[:conditions][:ooya_surname]).
+                search_by_ooya_name(params[:conditions][:ooya_name])
+    # @buildings = Building.left_joins(:ooya).where(ooyas: {name: ["4"]})
+    respond_to do |format|
+        format.js { render :index_box }
+    end
   end
 
   def show

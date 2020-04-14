@@ -61,7 +61,8 @@ class Ooya < ApplicationRecord
         ooya_sheet.add_cell(5, 0 , "備考" )
         ooya_sheet.add_cell(5, 1 , ooya.memo )
 
-        ooya_sheet.add_cell(7, 1 , "所有物件" )
+        ooya_sheet.add_cell(7, 1 , "所有\r\n物件rrrr" )
+        # ooya_sheet.add_cell(7, 1 , "所有物件" )
         ooya.buildings.each_with_index do |buildind, i|
           ooya_sheet.add_cell(i + 8, 2 , "●#{buildind.name}" )
         end

@@ -7,19 +7,20 @@
 
 <br>
 
-<%= search_form_for @q do |f| %>
+<%= form_with scope: :conditions, url:index_search_buildings_path,method: :get ,remote: true do |f| %>
+<%# <%= search_form_for @q do |f| %>
 
   <div class="line_info">
     <%= f.label :name, "建物名", class: ' line_content_1' %>
-    <%= f.search_field :name_cont, class: ' line_content_2' %>
+    <%= f.search_field :name, class: ' line_content_2' %>
   </div>
   <div class="line_info">
     <%= f.label :ooya_surname, "大家（名字）", class: ' line_content_1' %>
-    <%= f.search_field :ooya_surname_cont, class: ' line_content_2' %>
+    <%= f.search_field :ooya_surname, class: ' line_content_2' %>
   </div>
   <div class="line_info">
     <%= f.label :ooya_name, "大家（名前）", class: ' line_content_1' %>
-    <%= f.search_field :ooya_name_cont, class: ' line_content_2' %>
+    <%= f.search_field :ooya_name, class: ' line_content_2' %>
   </div>
   <div class="line_info">
     <%= f.submit "検索", class: ' line_content_4' %>
@@ -31,4 +32,6 @@
 </div>
 <br>
 
-<%= render 'index_box', buildings: @buildings %>
+<span id = "index_box">
+  <%= render 'index_box', buildings: @buildings %>
+</span>

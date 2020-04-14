@@ -22,6 +22,12 @@ class Building < ApplicationRecord
     parking: 99 #駐車場
   }
 
+  scope :search_by_name, -> (name) { where('buildings.name like ?',"%#{name}%") }
+  scope :search_by_ooya_surname, -> (surname) { left_joins(:ooya).where('ooyas.surname like ?',"%#{surname}%") }
+  scope :search_by_ooya_name, -> (name) { left_joins(:ooya).where('ooyas.name like ?',"%#{name}%") }
+  # scope :search_by_name, -> (name) { where(buildings: {name: name}) }
+  # scope :search_by_ooya_surname, -> (surname) { left_joins(:ooya).where(ooyas: {surname: surname}) }
+  # scope :search_by_ooya_name, -> (name) { where(ooyas: {name: name}) }
 
   def zip_cd_show
     "〒#{self.zip_cd[0,3]}-#{self.zip_cd[3,4]}"
