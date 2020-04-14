@@ -15,6 +15,26 @@
     <%= f.search_field :name, class: ' line_content_2' %>
   </div>
   <div class="line_info">
+    <%= f.label :type_div, "種別", class: ' line_content_1' %>
+    <%= f.select :type_div, Building.type_divs.keys.map{|k| [I18n.t("enums.building.type_div.#{k}"),k]} , {include_blank: true} ,class: "line_content_2"%>
+  </div>
+
+  <div class="line_info">
+    <%= f.label :sekisui_div, "積水区分", class: ' line_content_1' %>
+    <div class="line_content_2">
+      <%= f.check_box :sekisui_div , {multiple: true},0, nil%>
+      <span >一般</span>
+    </div>
+
+    <div class="line_content_3">
+      <%= f.check_box :sekisui_div , {multiple: true},1, nil%>
+      <span>積水</span>
+    </div>
+
+
+  </div>
+
+  <div class="line_info">
     <%= f.label :ooya_surname, "大家（名字）", class: ' line_content_1' %>
     <%= f.search_field :ooya_surname, class: ' line_content_2' %>
   </div>

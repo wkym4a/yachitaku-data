@@ -10,8 +10,11 @@ class BuildingsController < ApplicationController
     @buildings = Building.all
   end
   def index_search
-    @buildings = Building.
+# binding.pry
+    @buildings = Building.all.
                 search_by_name(params[:conditions][:name]).
+                search_by_type(params[:conditions][:type_div]).
+                search_by_sekisui(params[:conditions][:sekisui_div]).
                 search_by_ooya_surname(params[:conditions][:ooya_surname]).
                 search_by_ooya_name(params[:conditions][:ooya_name])
     # @buildings = Building.left_joins(:ooya).where(ooyas: {name: ["4"]})
