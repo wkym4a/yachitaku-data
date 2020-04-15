@@ -5,12 +5,9 @@ class BuildingsController < ApplicationController
   before_action :set_building, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @q = Building.ransack(params[:q])
-    # @buildings = @q.result(distinct: true)
     @buildings = Building.all
   end
   def index_search
-# binding.pry
     @buildings = Building.all.
                 search_by_name(params[:conditions][:name]).
                 search_by_type(params[:conditions][:type_div]).
